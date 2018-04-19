@@ -1,4 +1,6 @@
-Symfony
+Projet 5
 =======
 
-A Symfony project created on April 19, 2018, 1:14 pm.
+A Symfony project:
+
+Création d'un gestionnaire de projet en utilisant le framework Symfony.
