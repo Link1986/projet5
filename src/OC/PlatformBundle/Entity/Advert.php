@@ -49,6 +49,11 @@ class Advert
      */
     private $content;
 
+    /**
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published = true;
+
 
     /**
      * Get id
@@ -161,5 +166,28 @@ class Advert
         // Par défaut, la date de l'annonce est la date d'aujourd'hui
         $this->date = new \Datetime();
     }
-}
 
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     *
+     * @return Advert
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+}
