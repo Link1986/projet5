@@ -1,5 +1,4 @@
 <?php
-// src/OC/PlatformBundle/Entity/AdvertSkill.php
 
 namespace OC\PlatformBundle\Entity;
 
@@ -35,7 +34,6 @@ class AdvertSkill
    */
   private $skill;
 
-  // ... vous pouvez ajouter d'autres attributs bien sûr
 
   /**
    * @return integer

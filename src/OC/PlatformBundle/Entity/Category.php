@@ -1,5 +1,4 @@
 <?php
-// src/OC/PlatformBundle/Entity/Category.php
 
 namespace OC\PlatformBundle\Entity;
 

@@ -1,12 +1,11 @@
 <?php
-// src/OC/PlatformBundle/Entity/Skill.php
 
 namespace OC\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="OC\PlatformBundle\Entity\SkillRepository")
  * @ORM\Table(name="oc_skill")
  */
 class Skill
