@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use OC\PlatformBundle\Event\PlatformEvents;
+use OC\PlatformBundle\Event\MessagePostEvent;
 
 class AdvertController extends Controller
 {
@@ -87,10 +89,19 @@ class AdvertController extends Controller
     $advert = new Advert();
     $form   = $this->get('form.factory')->create(AdvertType::class, $advert);
 
-    if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->persist($advert);
-      $em->flush();
+      if ($form->handleRequest($request)->isValid()) {
+          // On crée l'évènement avec ses 2 arguments
+          $event = new MessagePostEvent($advert->getContent(), $advert->getUser());
+
+          // On déclenche l'évènement
+          $this->get('event_dispatcher')->dispatch(PlatformEvents::POST_MESSAGE, $event);
+
+          // On récupère ce qui a été modifié par le ou les listeners, ici le message
+          $advert->setContent($event->getMessage());
+
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($advert);
+          $em->flush();
 
       $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
