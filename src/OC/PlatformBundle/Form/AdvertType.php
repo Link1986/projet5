@@ -1,5 +1,4 @@
 <?php
-// src/OC/PlatformBundle/Form/AdvertType.php
 
 namespace OC\PlatformBundle\Form;
 
@@ -27,7 +26,7 @@ class AdvertType extends AbstractType
       ->add('date',      DateTimeType::class)
       ->add('title',     TextType::class)
       ->add('author',    TextType::class)
-      ->add('content',   TextareaType::class)
+      ->add('content', CkeditorType::class)
       ->add('image',     ImageType::class)
       ->add('categories', EntityType::class, array(
         'class'         => 'OCPlatformBundle:Category',
