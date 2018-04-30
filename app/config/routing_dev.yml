@@ -3,6 +3,11 @@ oc_platform_translation:
   defaults:
     _controller: OCPlatformBundle:Advert:translation
 
+oc_platform_paramconverter:
+  path: /test/{json}
+  defaults:
+    _controller: "OCPlatformBundle:Advert:ParamConverter"
+
 _wdt:
     resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
     prefix:   /_wdt

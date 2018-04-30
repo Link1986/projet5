@@ -12,6 +12,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use OC\PlatformBundle\Event\PlatformEvents;
 use OC\PlatformBundle\Event\MessagePostEvent;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class AdvertController extends Controller
 {
@@ -201,11 +202,19 @@ class AdvertController extends Controller
     return $this->redirectToRoute('oc_platform_home');
   }
 
-    public function translationAction($name)
+  public function translationAction($name)
     {
         return $this->render('OCPlatformBundle:Advert:translation.html.twig', array(
             'name' => $name
         ));
     }
+
+  /**
+   * @ParamConverter("json")
+   */
+  public function ParamConverterAction($json)
+  {
+      return new Response(print_r($json, true));
+  }
 
 }

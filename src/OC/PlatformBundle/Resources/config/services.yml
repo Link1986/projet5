@@ -53,3 +53,8 @@ services:
       - "2017-06-01"
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: processBeta }
+
+  oc_platform.paramconverter.json:
+    class: OC\PlatformBundle\ParamConverter\JsonParamConverter
+    tags:
+      - { name: request.param_converter }
