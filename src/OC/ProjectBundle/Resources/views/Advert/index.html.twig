@@ -1,0 +1,199 @@
+{% extends "OCProjectBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}- le gestionnaire de tâches
+{% endblock %}
+{% block body %}
+{% block ocproject_body %}
+
+	<section id="presentation" class="features section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-clipboard"></span>
+					<div class="feature-content">
+						<h5>La simplicité</h5>
+						<p>Il s'agit d'un outil facile à gérer, en effet Gesty est l'équivalent d'un carnet de notes. Ainsi vous pouvez prendre des notes et établir votre liste de tâches</p>
+					</div>
+				</div>
+				<!--  -->
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-desktop"></span>
+					<div class="feature-content">
+						<h5>La mise en ligne</h5>
+						<p>Une fois inscrit, vous pourrez créer votre liste de tâches en ligne. Ensuite vous aurez la possibilité de sauvegarder votre liste en ligne, afin d'y avoir accès depuis tous types de supports</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-picture"></span>
+					<div class="feature-content">
+						<h5>Une interface graphique</h5>
+						<p>Un système de paperboard, intuitif et agréable, est mis en place afin de faciliter l'ajout, la modification et la suppression des tâches, ainsi c'est vous qui maîtrisez tout.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-target"></span>
+					<div class="feature-content">
+						<h5>Une organisation centralisé</h5>
+						<p>Finis les papiers de partout, où la recherche de documents, grâce à cet outils vous pourrez créer une ou plusieurs listes et y avoir accès au même endroit.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-refresh"></span>
+					<div class="feature-content">
+						<h5>Mise à jour</h5>
+						<p>Tout au long de votre processus de création, de modification, et de suppression de vos listes. Vous aurez une présentation claire et mise à jour de vos tâches.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-pencil"></span>
+					<div class="feature-content">
+						<h5>Un outil pensé pour vous</h5>
+						<p>L'outil a été conçu pour répondre aux besoins des utilisateurs. Notez, rayez, enregistrez, modifiez, et recommencez, une prise en main rapide et aisé.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- features -->
+
+	<section id="creations" class="works section no-padding">
+		<div class="container-fluid">
+			<div class="row no-gutter">
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-1.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-1.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>De retour à l'école</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-2.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-2.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>En recherche d'idées</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-3.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-3.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Début de réflexion</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-4.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-4.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Comme à la maison</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-5.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-5.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Projet sur mesure</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-6.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-6.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Travail d'équipe</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-7.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-7.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Un projet rose</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="{{ asset('images/work-8.jpg') }}" class="work-box">
+						<img src="{{ asset('images/work-8.jpg') }}" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Organisation optimale</h5>
+							</div>
+						</div><!-- overlay -->
+					</a>
+				</div>
+			</div>
+		</div>
+	</section><!-- works -->
+
+    <section id="download" class="section download">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h3>Etes vous prêt à améliorer votre organisation? Inscrivez vous maintenant!</h3>
+                <a href="https://github.com/kamalcha/ActiveBox/archive/master.zip" class="btn btn-large">Inscrivez vous!</a>
+            </div>
+        </div>
+    </section><!-- download -->
+
+
+        <section id="testimonials" class="section testimonials no-padding">
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <div class="col-md-6">
+                                    <div class="avatar">
+                                        <img src="{{ asset('images/testimonial-1.jpg') }}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <blockquote>
+                                        <p>"Gesty, m'a permis de mettre de l'ordre dans mes idées, et de donner vie à mon projet "
+                                        </p>
+                                        <cite class="author">Estelle Simon, UX Designer </cite>
+                                    </blockquote>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col-md-6">
+                                    <div class="avatar">
+                                        <img src="{{ asset('images/testimonial-2.jpg') }}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <blockquote>
+                                        <p>"L'utilisation de todo-list m'a permis d'avancer plus rapidement sur mes objectifs."
+                                        </p>
+                                        <cite class="author">Aurore Dupont, Développeuse Freelance</cite>
+                                    </blockquote>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- flexslider -->
+                </div>
+            </div>
+        </section><!-- testimonials -->
+    
+
+
+
+{% endblock %}
+{% endblock %}

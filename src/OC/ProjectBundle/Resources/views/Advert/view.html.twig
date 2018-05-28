@@ -1,0 +1,14 @@
+{% extends "OCProjectBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+{% block ocplatform_body %}
+
+    {{ include("OCProjectBundle:Advert:form.html.twig") }}
+
+{% endblock %}
+
+{% endblock %}

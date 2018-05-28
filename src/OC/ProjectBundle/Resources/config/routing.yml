@@ -1,0 +1,6 @@
+oc_project_home:
+    path:      /
+    defaults:
+        _controller: OCProjectBundle:Advert:index
+
+
