@@ -3,4 +3,29 @@ oc_project_home:
     defaults:
         _controller: OCProjectBundle:Advert:index
 
+oc_project_member:
+    path:      /member
+    defaults:
+        _controller: OCProjectBundle:Advert:member
+
+oc_project_add:
+    path:      /add
+    defaults:
+        _controller: OCProjectBundle:Advert:add
+
+oc_project_view:
+    path:      /advert/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:view
+
+oc_project_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:edit
+
+oc_project_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:delete
+
 
