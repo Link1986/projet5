@@ -1,5 +1,0 @@
-'Symfony is great': 'J''aime Symfony'
-hello: Bonjour %name% !
-Bye: 'Au revoir'
-advert:
-    nombre: "[0,1]Il y a %count% annonce|[2,+Inf]Il y a %count% annonces"
