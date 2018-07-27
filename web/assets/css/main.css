@@ -74,6 +74,22 @@ ul, ol {
 ul li {
   list-style: none; }
 
+i.fas.fa-circle.green, a.espace {
+  color: #1d966d !important;
+}
+
+i.fas.fa-circle.red, a.deconnect {
+  color: #ff6666 !important;
+}
+
+i.fas.fa-circle.yellow, a.admin {
+  color: #FFE120 !important;
+}
+
+label.control-label.required, label.mr-1, label.mr-5, label.remember {
+    color: #fff;
+}
+
 .section {
   padding: 100px 0; }
 
