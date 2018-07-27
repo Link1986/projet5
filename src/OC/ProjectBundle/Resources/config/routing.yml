@@ -8,24 +8,77 @@ oc_project_member:
     defaults:
         _controller: OCProjectBundle:Advert:member
 
-oc_project_add:
-    path:      /add
+oc_project_admin:
+    path:      admin
     defaults:
-        _controller: OCProjectBundle:Advert:add
+        _controller: OCUserBundle:User:admin
 
-oc_project_view:
-    path:      /advert/{id}
+oc_project_todo:
+    path:      member/todolist
     defaults:
-        _controller: OCProjectBundle:Advert:view
+        _controller: OCProjectBundle:Advert:todo
+
+oc_project_check:
+    path:      member/todolist/check/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:check
 
 oc_project_edit:
-    path:      /edit/{id}
+    path:      member/todolist/edit/{id}
     defaults:
         _controller: OCProjectBundle:Advert:edit
 
 oc_project_delete:
-    path:      /delete/{id}
+    path:      member/todolist/delete/{id}
     defaults:
         _controller: OCProjectBundle:Advert:delete
 
+oc_project_bookmarks:
+    path:      member/bookmarks
+    defaults:
+        _controller: OCProjectBundle:Advert:bookmarks
 
+oc_project_modify:
+    path:      member/bookmarks/modify/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:modify
+
+oc_project_suppress:
+    path:      member/bookmarks/suppress/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:suppress
+
+oc_project_projets:
+    path:      member/projets
+    defaults:
+        _controller: OCProjectBundle:Advert:projet
+
+oc_project_list:
+    path:      member/projets/list
+    defaults:
+        _controller: OCProjectBundle:Advert:list
+
+oc_project_change:
+    path:      member/projets/list/change/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:change
+
+oc_project_erase:
+    path:      member/projets/list/erase/{id}
+    defaults:
+        _controller: OCProjectBundle:Advert:erase
+
+oc_project_profil:
+    path:      member/profil
+    defaults:
+        _controller: OCProjectBundle:Advert:profil
+
+oc_project_suppressaccount:
+    path:      member/profil/suppressaccount
+    defaults:
+        _controller: OCProjectBundle:Advert:suppressaccount
+
+oc_project_userdelete:
+    path:      member/profil/userdelete/{id}
+    defaults:
+        _controller: OCUserBundle:User:userdelete

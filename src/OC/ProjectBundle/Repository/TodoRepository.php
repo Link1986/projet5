@@ -19,12 +19,17 @@ class TodoRepository extends \Doctrine\ORM\EntityRepository
             ;
     }
 
-    public function myFindDQL($id)
+    public function findByUser($user)
     {
-        $query = $this->_em->createQuery('SELECT a FROM OCPlatformBundle:Advert a WHERE a.id = :id');
-        $query->setParameter('id', $id);
+        $qb = $this->createQueryBuilder('a');
 
-        // Utilisation de getSingleResult car la requête ne doit retourner qu'un seul résultat
-        return $query->getSingleResult();
+        $qb->where('a.user = :user')
+            ->setParameter('user', $user)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }

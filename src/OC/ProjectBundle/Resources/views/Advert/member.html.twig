@@ -1,126 +1,115 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+{% extends "OCProjectBundle::template.html.twig" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %}GESTY{% endblock %}</title>
-
-    {% block stylesheets %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-icon-180x180.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/android-icon-192x192.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/css/todo.css') }}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC" rel="stylesheet">
-    {% endblock %}
-</head>
-
-<body>
-<section class="banner" role="banner">
-    <header id="header">
-        <div class="header-content clearfix">
-            <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
-            <nav class="navigation" role="navigation">
-                <ul class="primary-nav">
-                    <span><a href="{{ path('oc_project_home') }}">Accueil</a></span>
-                    <span><a  class="connexion" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></span>
-                    <span><a class="deconnexion" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></span>
-                </ul>
-            </nav>
-            <a href="#" class="nav-toggle">Menu<span></span></a>
-        </div><!-- header content -->
-
-    </header><!-- header -->
-
-
-
-    <div class="container d-flex justify-content-center">
-        <h2  class="text-white text-center">Bienvenu dans votre espace membre :<br/>{{ app.user.username }}</h2>
-        <div class="card " style="width: 40rem; position: absolute; margin: 300px auto;">
-            <div class="card-body">
-                <div id="myDIV" class="header">
-
-                        <input type="text" id="myInput" placeholder="Ajouter un élément" class="text-center text-dark font-weight-bold">
-
-                    <span onclick="newElement()" class="addBtn btn btn-dark font-weight-bold my-3" >Ajouter</span>
-                </div>
-
-                <ul id="myUL" >
-
-                </ul>
-
-                <span class="addBtn btn btn-dark font-weight-bold my-5 d-flex justify-content-center" >Sauvegarder</span>
-
-            </div>
-        </div>
-    </div>
-
-</section>
-
-
-
-
-
-<footer class="footer">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="footer-col col-md-4">
-                    <h5>Gesty</h5>
-                    <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par Openclassrooms</p>
-                </div>
-                <div class="footer-col col-md-4">
-
-                    <ul class="footer-share">
-
-                    </ul>
-                </div>
-                <div class="footer-col col-md-4">
-                    <h5>A propos de l'auteur</h5>
-                    <p>Ce site à été conçu et réalisé par Ali Ghoudi, à l'aide du framework Symfony.</p>
-                </div>
-            </div>
-        </div>
-    </div><!-- footer top -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="col-md-12">
-                <p>Copyright © {{ "now"|date("Y") }} Gesty. All Rights Reserved<br>Made with <i class="fa fa-heart pulse"></i> by <a href="http://kamalchaneman.com/">Kamal Chaneman</a></p>
-            </div>
-        </div>
-    </div>
-</footer><!-- footer -->
-
-{% block javascripts %}
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset('assets/js/jquery.min.js') }}"><\/script>')</script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.fancybox.pack.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('assets/js/todo.js') }}"></script>
+{% block header %}
+    <div class="header-content clearfix">
+        <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
+        <nav class="navigation" role="navigation">
+            <ul class="primary-nav">
+                <span><a href="{{ path('oc_project_home') }}">Accueil</a></span>
+                <span><a  class="connexion" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></span>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a class="admin" href="{{ path('oc_project_admin') }}"><i class="fas fa-circle yellow"></i>Espace Admin</a></li>
+                {% endif %}
+                <span><a class="deconnexion" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></span>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle">Menu<span></span></a>
+    </div><!-- header content -->
 {% endblock %}
 
-</body>
-</html>
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center one">
+            <div class="sm-col-12 d-flex justify-content-center">
+                <h2  class="text-white text-center container my-5">Bienvenu, ici se trouve un ensemble de services destinés à nos membres</h2>
+            </div>
+            <div class="container sm-col-10 card contenant">
+                <img class="card-img-top checklist" src="{{ asset('images/image2.jpg') }}" alt="">
+                <div class="card-body corps">
+
+                    <div class="form-group d-flex justify-content-center">
+
+                        <h3 class="text-center font-weight-bold">Bienvenu dans votre espace membre</h3>
+
+                        <p  class="text-center profil username my-3">{{ app.user.username }}</p>
+
+                            <div class="card text-white bg-dark mb-3 carte">
+                                        <div class="card-header text-center col-sm-12 titre">Citation du jour</div>
+                                        <div class="card-body">
+                                            <p id="quote" class="card-text text-center text-white"></p><br>
+                                            <h5 id ="author" class="card-title text-center text-white"></h5><br>
+                                            <div class="d-flex justify-content-center" ><button id ="button" type="button" class="btn btn-success my-3">Afficher une citation</button></div>
+                                        </div>
+                            </div>
+
+                        <h3 class="text-center font-weight-bold">Voici la liste des services qui vous sont proposés</h3>
+
+                        <div class="container-fluid conteneur">
+
+                            <div class="row content">
+
+                                <div class="sm-col-6 contenu">
+                                    <div class="card activite my-3 gauche">
+                                        <img class="card-img-top" src="{{ asset('images/todo.jpg') }}" alt="">
+                                        <div class="card-body carte">
+                                            <h4 class="card-title titre">Liste de tâches</h4>
+                                            <p class="card-text description">Un outil qui vous permet de créer des listes de tâches à effectuer.</p>
+                                            <a href="{{ path('oc_project_todo') }}" class="btn btn-primary m_bouton">Liste de tâches</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sm-col-6 contenu">
+                                    <div class="card activite my-3 droite">
+                                        <img class="card-img-top" src="{{ asset('images/bookmarks.jpg') }}" alt="">
+                                        <div class="card-body carte">
+                                            <h4 class="card-title titre">Bookmarks</h4>
+                                            <p class="card-text description">Vous pourrez y inscrire l'ensemble de vos sites favoris.</p>
+
+                                            <a href="{{ path('oc_project_bookmarks') }}" class="btn btn-primary m_bouton">Bookmarks</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row content">
+
+                                <div class="sm-col-6 contenu">
+                                    <div class="card activite my-3 gauche">
+                                        <img class="card-img-top" src="{{ asset('images/projets.jpg') }}" alt="">
+                                        <div class="card-body carte">
+                                            <h4 class="card-title titre">Projets</h4>
+                                            <p class="card-text description">Vous pourrez créer des projets et organiser leur suivi en ligne.</p>
+                                            <a href="{{ path('oc_project_projets') }}" class="btn btn-primary m_bouton">Projets</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sm-col-6 contenu">
+                                    <div class="card activite my-3 droite">
+                                        <img class="card-img-top" src="{{ asset('images/profil.jpg') }}" alt="">
+                                        <div class="card-body carte">
+                                            <h4 class="card-title titre">Profil</h4>
+                                            <p class="card-text description">Accéder à votre profil, afin de consulter et modifier vos informations.</p>
+                                            <a href="{{ path('oc_project_profil') }}" class="btn btn-primary m_bouton">Profil</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+{% endblock %}

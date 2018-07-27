@@ -1,7 +1,7 @@
 {% extends "OCProjectBundle::layout.html.twig" %}
 
 {% block title %}
-	{{ parent() }}- le gestionnaire de tâches
+	{{ parent() }} - Accueil
 {% endblock %}
 {% block body %}
 {% block ocproject_body %}
@@ -147,7 +147,7 @@
         <div class="container">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h3>Etes vous prêt à améliorer votre organisation? Inscrivez vous maintenant!</h3>
-                <a href="https://github.com/kamalcha/ActiveBox/archive/master.zip" class="btn btn-large">Inscrivez vous!</a>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-large">Inscrivez vous!</a>
             </div>
         </div>
     </section><!-- download -->
@@ -191,9 +191,6 @@
                 </div>
             </div>
         </section><!-- testimonials -->
-    
-
-
 
 {% endblock %}
 {% endblock %}

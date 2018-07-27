@@ -4,10 +4,11 @@ namespace OC\ProjectBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Todo
  *
- * @ORM\Table(name="todo")
+ * @ORM\Table(name="oc_todo")
  * @ORM\Entity(repositoryClass="OC\ProjectBundle\Repository\TodoRepository")
  */
 class Todo
@@ -27,6 +28,20 @@ class Todo
      * @ORM\Column(name="list", type="string", length=255)
      */
     private $list;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="OC\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $user;
+
+    /**
+     * @ORM\Column(name="checked", type="boolean")
+     */
+    private $checked = false;
 
 
     /**
@@ -62,5 +77,52 @@ class Todo
     {
         return $this->list;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param integer $user
+     *
+     * @return Todo
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set checked
+     *
+     * @param boolean $checked
+     *
+     * @return Todo
+     */
+    public function setChecked($checked)
+    {
+        $this->checked = $checked;
+
+        return $this;
+    }
+
+    /**
+     * Get checked
+     *
+     * @return boolean
+     */
+    public function getChecked()
+    {
+        return $this->checked;
+    }
+}
