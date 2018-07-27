@@ -8,6 +8,12 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Gesty, Un outil qui vous permettra, de créer en ligne pas à pas vos listes de tâches à effectuer"/>
+        <meta name="keywords" content="Gesty, outil de liste de tâches, gestionnaire de projets, liens favoris, outils multitâches, gérer vos projets en ligne"/>
+        <meta name="robots" content="all"/>
+        <meta property="og:title" content="Gesty, Un outil qui vous permettra, de créer en ligne pas à pas vos listes de tâches à effectuer"/>
+        <meta property="og:description" content="Gesty, outil de liste de tâches, gestionnaire de projets, liens favoris, outils multitâches, gérer vos projets en ligne"/>
+        <meta property="og:image" content="{{ asset('images/favicon-32x32.png') }}"/>
 
         <title>{% block title %}GESTY{% endblock %}</title>
 
@@ -25,6 +31,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
         {% endblock %}
     </head>
@@ -40,8 +47,16 @@
                         <li><a href="#presentation">Présentation</a></li>
                         <li><a href="#creations">Créations</a></li>
                         <li><a href="#download">Témoignages</a></li>
-                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li><a class="espace" href="{{ path('oc_project_member') }}"><i class="fas fa-circle green"></i>Espace Membre</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a class="admin" href="{{ path('oc_project_admin') }}"><i class="fas fa-circle yellow"></i>Espace Admin</a></li>
+                        {% endif %}
+                            <li><a class="deconnect" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-circle red"></i>Se déconnecter</a></li>
+                        {% else %}
+                            <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                            <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
                 <a href="#" class="nav-toggle">Menu<span></span></a>
@@ -68,7 +83,8 @@
                     <div class="row">
                         <div class="footer-col col-md-4">
                             <h5>Gesty</h5>
-                            <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par Openclassrooms</p>
+                            <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par
+                                <a href="https://openclassrooms.com" target="_blank">Openclassrooms</a></p>
                         </div>
                         <div class="footer-col col-md-4">
 
@@ -78,7 +94,7 @@
                         </div>
                         <div class="footer-col col-md-4">
                             <h5>A propos de l'auteur</h5>
-                            <p>Ce site à été conçu et réalisé par Ali Ghoudi, à l'aide du framework Symfony.</p>
+                            <p>Ce site à été conçu et réalisé par Ali Ghoudi, à l'aide du framework <a href="https://symfony.com/" target="_blank">Symfony</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +102,7 @@
             <div class="footer-bottom">
                 <div class="container">
                     <div class="col-md-12">
-                        <p>Copyright © {{ "now"|date("Y") }} Gesty. All Rights Reserved<br>Made with <i class="fa fa-heart pulse"></i> by <a href="http://kamalchaneman.com/">Kamal Chaneman</a></p>
+                        <p>Copyright © {{ "now"|date("Y") }} Gesty. All Rights Reserved<br>Made with <i class="fa fa-heart pulse"></i> by <a href="http://kamalchaneman.com/" target="_blank">Kamal Chaneman</a></p>
                     </div>
                 </div>
             </div>
@@ -101,7 +117,6 @@
         <script src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.fancybox.pack.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
-        <script src="{{ asset('assets/js/modernizr.js') }}"></script>
         <script src="{{ asset('assets/js/main.js') }}"></script>
         {% endblock %}
 
