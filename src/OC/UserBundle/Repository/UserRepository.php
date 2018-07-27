@@ -10,4 +10,26 @@ namespace OC\UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function myFindDQL($id)
+    {
+        $query = $this->_em->createQuery('SELECT a FROM OCUserBundle:User a WHERE a.id = :id');
+        $query->setParameter('id', $id);
+
+        // Utilisation de getSingleResult car la requête ne doit retourner qu'un seul résultat
+        return $query->getSingleResult();
+    }
+
+    public function findByUser($user)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where('a.user = :user')
+            ->setParameter('user', $user)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
