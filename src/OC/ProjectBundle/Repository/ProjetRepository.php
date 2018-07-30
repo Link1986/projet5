@@ -16,6 +16,8 @@ class ProjetRepository extends \Doctrine\ORM\EntityRepository
 
         $qb->where('a.userProjet = :userProjet')
             ->setParameter('userProjet', $userProjet)
+            ->setFirstResult(0)
+            ->setMaxResults(10)
         ;
 
         return $qb

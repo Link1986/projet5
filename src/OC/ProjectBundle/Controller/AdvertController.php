@@ -103,10 +103,6 @@ class AdvertController extends Controller
 
         $listAdverts = $repository->FindByUser($this->get('security.token_storage')->getToken()->getUser()->getId());
 
-
-
-        // On passe la méthode createView() du formulaire à la vue
-        // afin qu'elle puisse afficher le formulaire toute seule
         return $this->render('OCProjectBundle:Advert:todo.html.twig', array(
             'form' => $form->createView(),
             'listAdverts' => $listAdverts
