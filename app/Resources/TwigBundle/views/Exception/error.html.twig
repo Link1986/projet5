@@ -1,0 +1,10 @@
+{% extends "::template-error.html.twig" %}
+
+{% block body %}
+    <p>
+        Une erreur est survenu lors de la navigation <br/>
+        Veuillez nous excuser pour la gêne occasionné
+    </p>
+    <a href="{{ path('oc_project_home') }}" class="btn btn-large">Retour à la page d'accueil</a>
+{% endblock %}
+
