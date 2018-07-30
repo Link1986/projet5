@@ -1,2 +1,71 @@
-Bonjour Monsieur,<br>
-Vous êtes un super admin, félicitation!!!
+{% extends "OCProjectBundle::template.html.twig" %}
+
+{% block header %}
+    <div class="header-content clearfix">
+        <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
+        <nav class="navigation" role="navigation">
+            <ul class="primary-nav">
+                <span><a href="{{ path('oc_project_home') }}">Accueil</a></span>
+                <span><a href="{{ path('oc_project_member') }}">Espace membre</a></span>
+                <span><a  class="connexion" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></span>
+                <span><a class="deconnexion" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></span>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle">Menu<span></span></a>
+    </div><!-- header content -->
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center one">
+            <div class="sm-col-12 d-flex justify-content-center">
+                <h2  class="text-white text-center container my-5">Cette page vous permet d'accéder à l'espace d'administration</h2>
+            </div>
+            <div class="container sm-col-10 card contenant">
+                <img class="card-img-top checklist" src="{{ asset('images/admin.jpg') }}" alt="">
+                <div class="card-body corps">
+
+                    <div class="form-group d-flex justify-content-center">
+
+                        <p class="d-flex justify-content-center"><a type="button" class="btn btn-danger d-flex justify-content-center text-center bn_membre" href="{{ path('oc_project_member') }}">
+                                <i class="fas fa-chevron-circle-left mr-2 mt-1"></i> Retourner à l'espace membre
+                            </a>
+                        </p>
+
+                        <h3 class="text-center font-weight-bold">Espace Admin</h3>
+
+                        <p  class="text-center profil font-italic mt-3">Votre pseudo:</p>
+                        <p  class="text-center profil">{{ app.user.username }}</p>
+
+                        <p  class="text-center profil font-italic">Votre email:</p>
+                        <p  class="text-center profil">{{ app.user.email }}</p>
+
+                        <p  class="text-center profil font-italic">Nombre d'utilisateur inscrit sur le site:</p>
+                        <p  class="text-center profil">{{ listUser|length }}</p>
+
+                        <p  class="text-center profil font-italic">Ensemble d'éléments dans les listes de tâche:</p>
+                        <p  class="text-center profil">{{ listAdverts|length }}</p>
+
+                        <p  class="text-center profil font-italic">Ensemble de liens dans les favoris:</p>
+                        <p  class="text-center profil">{{ listUrls|length }}</p>
+
+                        <p  class="text-center profil font-italic">Ensemble des projets:</p>
+                        <p  class="text-center profil">{{ listProjet|length }}</p>
+
+                        <p class="d-flex justify-content-center"><a type="button" class="btn btn-success d-flex justify-content-center my-5 text-center" href="{{ path('fos_user_profile_edit') }}">
+                                <i class="fas fa-edit mr-1 mt-1"></i>modifier vos informations
+                            </a></p>
+
+                        <p class="d-flex justify-content-center"><a type="button" class="btn btn-danger d-flex justify-content-center text-center" href="{{path ('oc_project_suppressaccount') }}">
+                                <i class="fas fa-window-close mr-2 mt-1"></i> supprimer votre compte
+                            </a><br></p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

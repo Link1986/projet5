@@ -18,12 +18,11 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/flexslider.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
+        {% stylesheets output="css/compiled/main.css" filter='cssrewrite, ?scssphp'
+
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     {% endblock %}
@@ -80,7 +79,7 @@
             <div class="row">
                 <div class="footer-col col-md-4">
                     <h5>Gesty</h5>
-                    <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par Openclassrooms</p>
+                    <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par <a href="https://openclassrooms.com" target="_blank">Openclassrooms</a></p>
                 </div>
                 <div class="footer-col col-md-4">
 
@@ -90,7 +89,7 @@
                 </div>
                 <div class="footer-col col-md-4">
                     <h5>A propos de l'auteur</h5>
-                    <p>Ce site à été conçu et réalisé par Ali Ghoudi, à l'aide du framework Symfony.</p>
+                    <p>Ce site à été conçu et réalisé par Ali Ghoudi, à l'aide du framework <a href="https://symfony.com/" target="_blank">Symfony</a>.</p>
                 </div>
             </div>
         </div>
@@ -109,11 +108,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('assets/js/jquery.min.js') }}"><\/script>')</script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.fancybox.pack.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    {% javascripts output="js/compiled/core.js" filter='?jsqueeze'
+
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 {% endblock %}
 
 </body>

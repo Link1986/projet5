@@ -21,7 +21,50 @@ class UserController extends Controller
 
     public function adminAction()
     {
-        return $this->render('OCUserBundle:User:admin.html.twig');
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+            return $this->redirect($this->generateUrl('oc_project_home'));
+        }
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OCProjectBundle:Todo')
+        ;
+
+        $listAdverts = $repository->myFindAll();
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OCProjectBundle:Bookmarks')
+        ;
+
+        $listUrls = $repository->myFindAll();
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OCProjectBundle:Projet')
+        ;
+
+        $listProjet = $repository->myFindAll();
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('OCUserBundle:User')
+        ;
+
+        $listUser = $repository->myFindAll();
+
+        return $this->render('OCUserBundle:User:admin.html.twig', array(
+            'listAdverts' => $listAdverts,
+            'listUrls' => $listUrls,
+            'listProjet' => $listProjet,
+            'listUser' => $listUser
+        ));
+
     }
 
 }

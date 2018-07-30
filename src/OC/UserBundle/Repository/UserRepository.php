@@ -32,4 +32,13 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->getResult()
             ;
     }
+
+    public function myFindAll()
+    {
+        return $this
+            ->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
