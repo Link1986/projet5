@@ -366,7 +366,7 @@ class AdvertController extends Controller
 
                 $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
-                return $this->redirectToRoute('oc_project_projets');
+                return $this->redirectToRoute('oc_project_list');
             }
         }
 
