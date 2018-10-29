@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Inscription{% endblock %}
+
+{% block header %}
+<div class="header-content clearfix">
+    <a class="logo" href="{{ path('home') }}">GESTY</a>
+    <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+            <li><a href="{{ path('home') }}">Accueil</a></li>
+            <li><a href="{{ path('register') }}">Inscription</a></li>
+            <li><a href="{{ path('login') }}">Connexion</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="nav-toggle">Menu<span></span></a>
+</div><!-- header content -->
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row d-flex justify-content-center one text-center text-white">
+
+            {{ form_start(form) }}
+
+            Addresse email :
+            <br>
+            {{ form_widget(form.email, {'attr': {'class': 'my-2', 'placeholder': 'Adresse email', 'width': '100%'}}) }}
+            {{ form_errors(form.email) }}
+
+            Pseudonyme :
+            <br>
+            {{ form_widget(form.username, {'attr': {'class': 'my-2', 'placeholder': 'Nom d\'utilisateur'}}) }}
+            {{ form_errors(form.username) }}
+
+            Mot de passe :
+            <br>
+            {{ form_widget(form.password, {'attr': {'class': 'my-2', 'placeholder': 'Mot de passe'}}) }}
+            {{ form_errors(form.password) }}
+
+            Confirmer le mot de passe :
+            <br>
+            {{ form_widget(form.confirm_password, {'attr': {'class': 'my-2', 'placeholder': 'Mot de passe'}}) }}
+            {{ form_errors(form.confirm_password) }}
+
+            <button type="submit" class="btn my-3">Inscrivez vous</button>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
