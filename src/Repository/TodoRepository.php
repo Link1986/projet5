@@ -30,16 +30,16 @@ class TodoRepository extends ServiceEntityRepository
 
     public function findByUser($user)
     {
-        $qb = $this->createQueryBuilder('a');
+        $query = $this->createQueryBuilder('a');
 
 
-        $qb->where('a.user = :user')
+        $query->where('a.user = :user')
             ->setParameter('user', $user)
             ->setFirstResult(0)
             ->setMaxResults(10)
         ;
 
-        return $qb
+        return $query
             ->getQuery()
             ->getResult()
             ;

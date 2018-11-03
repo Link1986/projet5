@@ -62,12 +62,12 @@ class TodoController extends AbstractController
                         $addAjax = $request->request->get('addAjax');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
+                    $manager = $this->getDoctrine()->getManager();
                     $todo->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
                     $todo->setList($addAjax);
                     $todo->setChecked(false);
-                    $em->persist($todo);
-                    $em->flush();
+                    $manager->persist($todo);
+                    $manager->flush();
 
                 }
 
@@ -80,10 +80,10 @@ class TodoController extends AbstractController
                         $modifyAjax = $request->request->get('modifyAjax');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $todo = $em->getRepository('App\Entity\Todo')->find(intval($modifyAjaxId));
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($modifyAjaxId));
                     $todo->setList($modifyAjax);
-                    $em->flush();
+                    $manager->flush();
 
                 }
 
@@ -91,10 +91,10 @@ class TodoController extends AbstractController
 
                     $suppressAjax = $request->request->get('suppressAjax');
 
-                    $em = $this->getDoctrine()->getManager();
-                    $todo = $em->getRepository('App\Entity\Todo')->find(intval($suppressAjax));
-                    $em->remove($todo);
-                    $em->flush();
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($suppressAjax));
+                    $manager->remove($todo);
+                    $manager->flush();
 
                 }
 
@@ -106,10 +106,10 @@ class TodoController extends AbstractController
                         $checkedAjax = $request->request->get('checkedAjax');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $todo = $em->getRepository('App\Entity\Todo')->find(intval($valAjax));
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($valAjax));
                     $todo->setChecked(filter_var( $checkedAjax, FILTER_VALIDATE_BOOLEAN));
-                    $em->flush();
+                    $manager->flush();
 
                 }
 
@@ -162,11 +162,11 @@ class TodoController extends AbstractController
                         $addBookmarks = $request->request->get('addBookmarks');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
+                    $manager = $this->getDoctrine()->getManager();
                     $bookmarks->setUserBook($this->get('security.token_storage')->getToken()->getUser()->getId());
                     $bookmarks->setUrl($addBookmarks);
-                    $em->persist($bookmarks);
-                    $em->flush();
+                    $manager->persist($bookmarks);
+                    $manager->flush();
 
                 }
 
@@ -179,10 +179,10 @@ class TodoController extends AbstractController
                         $modifyBookmarks = $request->request->get('modifyBookmarks');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $bookmarks = $em->getRepository('App\Entity\Bookmarks')->find(intval($modifyIdBookmarks));
+                    $manager = $this->getDoctrine()->getManager();
+                    $bookmarks = $manager->getRepository('App\Entity\Bookmarks')->find(intval($modifyIdBookmarks));
                     $bookmarks->setUrl($modifyBookmarks);
-                    $em->flush();
+                    $manager->flush();
 
                 }
 
@@ -190,10 +190,10 @@ class TodoController extends AbstractController
 
                     $suppressBookmarks = $request->request->get('suppressBookmarks');
 
-                    $em = $this->getDoctrine()->getManager();
-                    $bookmarks = $em->getRepository('App\Entity\Bookmarks')->find(intval($suppressBookmarks));
-                    $em->remove($bookmarks);
-                    $em->flush();
+                    $manager = $this->getDoctrine()->getManager();
+                    $bookmarks = $manager->getRepository('App\Entity\Bookmarks')->find(intval($suppressBookmarks));
+                    $manager->remove($bookmarks);
+                    $manager->flush();
 
                 }
 
@@ -248,12 +248,12 @@ class TodoController extends AbstractController
                         $addContent = $request->request->get('addContent');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
+                    $manager = $this->getDoctrine()->getManager();
                     $project->setUserProject($this->get('security.token_storage')->getToken()->getUser()->getId());
                     $project->setTitle($addTitle);
                     $project->setContent($addContent);
-                    $em->persist($project);
-                    $em->flush();
+                    $manager->persist($project);
+                    $manager->flush();
 
                 }
 
@@ -268,11 +268,11 @@ class TodoController extends AbstractController
                         $modifyContentProject = $request->request->get('modifyContentProject');
                     }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $project = $em->getRepository('App\Entity\Project')->find(intval($modifyIdProject));
+                    $manager = $this->getDoctrine()->getManager();
+                    $project = $manager->getRepository('App\Entity\Project')->find(intval($modifyIdProject));
                     $project->setTitle($modifyTitleProject);
                     $project->setContent($modifyContentProject);
-                    $em->flush();
+                    $manager->flush();
 
                 }
 
@@ -280,10 +280,10 @@ class TodoController extends AbstractController
 
                     $suppressProject = $request->request->get('suppressProject');
 
-                    $em = $this->getDoctrine()->getManager();
-                    $project = $em->getRepository('App\Entity\Project')->find(intval($suppressProject));
-                    $em->remove($project);
-                    $em->flush();
+                    $manager = $this->getDoctrine()->getManager();
+                    $project = $manager->getRepository('App\Entity\Project')->find(intval($suppressProject));
+                    $manager->remove($project);
+                    $manager->flush();
 
                 }
 
@@ -355,11 +355,11 @@ class TodoController extends AbstractController
                     $modifyEmail = $request->request->get('modifyEmail');
                 }
 
-                $em = $this->getDoctrine()->getManager();
-                $profile = $em->getRepository('App\Entity\User')->find(intval($modifyIdProfile));
+                $manager = $this->getDoctrine()->getManager();
+                $profile = $manager->getRepository('App\Entity\User')->find(intval($modifyIdProfile));
                 $profile->setUsername($modifyUsername);
                 $profile->setEmail($modifyEmail);
-                $em->flush();
+                $manager->flush();
 
             }
         }

@@ -21,14 +21,14 @@ class UserRepository extends ServiceEntityRepository
 
     public function findByUser($user)
     {
-        $qb = $this->createQueryBuilder('a');
+        $query = $this->createQueryBuilder('a');
 
 
-        $qb->where('a.user = :user')
+        $query->where('a.user = :user')
             ->setParameter('user', $user)
         ;
 
-        return $qb
+        return $query
             ->getQuery()
             ->getResult()
             ;

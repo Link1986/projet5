@@ -21,15 +21,15 @@ class BookmarksRepository extends ServiceEntityRepository
 
     public function findByUser($userBook)
     {
-        $qb = $this->createQueryBuilder('a');
+        $query = $this->createQueryBuilder('a');
 
-        $qb->where('a.userBook = :userBook')
+        $query->where('a.userBook = :userBook')
             ->setParameter('userBook', $userBook)
             ->setFirstResult(0)
             ->setMaxResults(10)
         ;
 
-        return $qb
+        return $query
             ->getQuery()
             ->getResult()
             ;

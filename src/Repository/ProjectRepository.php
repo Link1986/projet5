@@ -21,15 +21,15 @@ class ProjectRepository extends ServiceEntityRepository
 
     public function findByUser($userProject)
     {
-        $qb = $this->createQueryBuilder('a');
+        $query = $this->createQueryBuilder('a');
 
-        $qb->where('a.userProject = :userProject')
+        $query->where('a.userProject = :userProject')
             ->setParameter('userProject', $userProject)
             ->setFirstResult(0)
             ->setMaxResults(10)
         ;
 
-        return $qb
+        return $query
             ->getQuery()
             ->getResult()
             ;

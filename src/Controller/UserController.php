@@ -73,9 +73,9 @@ class UserController extends AbstractController
     public function userDelete(Request $request, User $user)
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($user);
+        $manager->flush();
 
         $this->get('security.token_storage')->setToken(null);
 
@@ -132,11 +132,11 @@ class UserController extends AbstractController
                     $modifyEmail = $request->request->get('modifyEmail');
                 }
 
-                $em = $this->getDoctrine()->getManager();
-                $profile = $em->getRepository('App\Entity\User')->find(intval($modifyIdProfile));
+                $manager = $this->getDoctrine()->getManager();
+                $profile = $manager->getRepository('App\Entity\User')->find(intval($modifyIdProfile));
                 $profile->setUsername($modifyUsername);
                 $profile->setEmail($modifyEmail);
-                $em->flush();
+                $manager->flush();
 
             }
         }
