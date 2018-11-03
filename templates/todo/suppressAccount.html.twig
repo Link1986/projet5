@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Mon profil{% endblock %}
+
+{% block header %}
+    <div class="header-content clearfix">
+        <a class="logo" href="{{ path('home') }}">GESTY</a>
+        <nav class="navigation" role="navigation">
+            <ul class="primary-nav">
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('member') }}">Espace membre</a></li>
+                <li><a  class="espace" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></li>
+                <li><a class="deconnect" href="{{ path('logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle">Menu<span></span></a>
+    </div><!-- header content -->
+{% endblock %}
+
+{% block body %}
+    <div class="container d-flex justify-content-center title">
+        <h2  class="text-white text-center my-5" >Cette page vous permet de supprimer définitivement votre compte</h2>
+    </div>
+    <div class="container images">
+        <img src="{{ asset('build/images/computer.jpg') }}" class="img-thumbnail" alt="">
+    </div>
+    <div class="container my-3">
+        <p class="d-flex justify-content-center"><a type="button" class="btn btn-danger d-flex justify-content-center text-center bn_membre" href="{{ path('member') }}">
+                <i class="fas fa-chevron-circle-left  mr-2 mt-1"></i> Retourner à l'espace membre
+            </a>
+        </p>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <h3 class="favorite">Supprimer mon profil</h3>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <p  class="text-center profil">Attention, êtes vous sur de bien vouloir supprimer votre compte? <br/>
+            la suppression de vos données est définitive.
+        </p>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <a type="button" href="{{path ('user_delete', { 'id': app.user.id }) }}" class="btn d-flex justify-content-center text-center my-2 delete" id="">
+            <i class="fas fa-window-close  mr-2 mt-1"></i> supprimer mon profil
+        </a><br>
+    </div>
+{% endblock %}
