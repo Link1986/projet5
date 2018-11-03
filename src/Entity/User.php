@@ -20,14 +20,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     message="Ce pseudonyme est déjà utilisé"
  *     )
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,6 +65,11 @@ class User implements UserInterface
      * @Assert\EqualTo(propertyPath="password", message="La confirmation du mot de passe n'est pas identique au mot de passe")
      */
     private $confirm_password;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     public function getId(): ?int
     {
@@ -133,9 +138,37 @@ class User implements UserInterface
 
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize([$this->id, $this->username, $this->password]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
 }

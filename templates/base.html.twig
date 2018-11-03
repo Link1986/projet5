@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,10 +35,13 @@
             <link rel="stylesheet" href="{{ asset('build/css/responsive.css') }}">
             <link rel="stylesheet" href="{{ asset('build/css/member.css') }}">
         {% endblock %}
+
     </head>
 
     <body>
+
     <section class="banner" role="banner">
+
         <header id="header">
             {% block header %}
             {% endblock %}
@@ -45,11 +50,11 @@
         {% block body %}
 
         {% endblock %}
+
     </section><!-- banner -->
 
-
-
     <footer class="footer">
+
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -59,9 +64,7 @@
                             <a href="https://openclassrooms.com" target="_blank">Openclassrooms</a></p>
                     </div>
                     <div class="footer-col col-md-4">
-
                         <ul class="footer-share">
-
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
@@ -78,6 +81,7 @@
                 </div>
             </div>
         </div>
+
     </footer><!-- footer -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -91,5 +95,7 @@
             <script src="{{ asset('build/js/retina.js') }}"></script>
             <script src="{{ asset('build/js/main.js') }}"></script>
         {% endblock %}
+
     </body>
+
 </html>

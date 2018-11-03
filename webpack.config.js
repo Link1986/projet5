@@ -54,6 +54,7 @@ Encore
     .addEntry('checklist', './assets/images/checklist.jpg')
     .addEntry('book', './assets/images/book.jpg')
     .addEntry('paper', './assets/images/paper.jpg')
+    .addEntry('computer', './assets/images/computer.jpg')
 
     //CSS
     .addStyleEntry('css/flexslider', './assets/css/flexslider.css')

@@ -7,12 +7,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\Todo;
 use App\Form\TodoType;
 use App\Entity\Bookmarks;
 use App\Form\BookmarksType;
 use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Entity\User;
 
 class TodoController extends AbstractController
 {
@@ -232,6 +234,61 @@ class TodoController extends AbstractController
 
         $form->handleRequest($request);
 
+            if($request->isXmlHttpRequest()) {
+
+                if ($request->request->get('addTitle')) {
+
+                    $project = new Project();
+
+                    $addTitle = $request->request->get('addTitle');
+                    $addContent = $request->request->get('addContent');
+
+                    if ($addTitle !== "" && $addContent !== "") {
+                        $addTitle = $request->request->get('addTitle');
+                        $addContent = $request->request->get('addContent');
+                    }
+
+                    $em = $this->getDoctrine()->getManager();
+                    $project->setUserProject($this->get('security.token_storage')->getToken()->getUser()->getId());
+                    $project->setTitle($addTitle);
+                    $project->setContent($addContent);
+                    $em->persist($project);
+                    $em->flush();
+
+                }
+
+                if($request->request->get('modifyTitleProject')){
+
+                    $modifyTitleProject = $request->request->get('modifyTitleProject');
+                    $modifyContentProject = $request->request->get('modifyContentProject');
+                    $modifyIdProject = $request->request->get('modifyIdProject');
+
+                    if ($modifyTitleProject !== "" && $modifyContentProject !== "") {
+                        $modifyTitleProject = $request->request->get('modifyTitleProject');
+                        $modifyContentProject = $request->request->get('modifyContentProject');
+                    }
+
+                    $em = $this->getDoctrine()->getManager();
+                    $project = $em->getRepository('App\Entity\Project')->find(intval($modifyIdProject));
+                    $project->setTitle($modifyTitleProject);
+                    $project->setContent($modifyContentProject);
+                    $em->flush();
+
+                }
+
+                if($request->request->get('suppressProject')){
+
+                    $suppressProject = $request->request->get('suppressProject');
+
+                    $em = $this->getDoctrine()->getManager();
+                    $project = $em->getRepository('App\Entity\Project')->find(intval($suppressProject));
+                    $em->remove($project);
+                    $em->flush();
+
+                }
+
+            }
+
         $repository = $this
             ->getDoctrine()
             ->getManager()
@@ -253,6 +310,75 @@ class TodoController extends AbstractController
             'projectForm' => $form->createView(),
             'listProject' => $listProject,
             'listAllProject' => $listAllProject
+        ]);
+    }
+
+    /**
+     * @Route("/member/profile", name="profile")
+     */
+    public function profile(Request $request)
+    {
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('App\Entity\Todo')
+        ;
+
+        $listTodo = $repository->FindByUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('App\Entity\Bookmarks')
+        ;
+
+        $listUrls = $repository->FindByUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('App\Entity\Project')
+        ;
+
+        $listProject = $repository->FindByUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+
+        if($request->isXmlHttpRequest()) {
+            if($request->request->get('modifyUsername')){
+
+                $modifyUsername = $request->request->get('modifyUsername');
+                $modifyEmail = $request->request->get('modifyEmail');
+                $modifyIdProfile = $request->request->get('modifyIdProfile');
+
+                if ($modifyUsername !== "" && $modifyEmail !== "") {
+                    $modifyUsername = $request->request->get('modifyUsername');
+                    $modifyEmail = $request->request->get('modifyEmail');
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $profile = $em->getRepository('App\Entity\User')->find(intval($modifyIdProfile));
+                $profile->setUsername($modifyUsername);
+                $profile->setEmail($modifyEmail);
+                $em->flush();
+
+            }
+        }
+
+        return $this->render('todo/profile.html.twig', [
+            'controller_name' => 'TodoController',
+            'listTodo' => $listTodo,
+            'listUrls' => $listUrls,
+            'listProject' => $listProject
+        ]);
+    }
+
+    /**
+     * @Route("member/profile/suppress_account", name="suppress_account")
+     */
+    public function suppressAccount()
+    {
+        return $this->render('todo/suppressAccount.html.twig', [
+            'controller_name' => 'TodoController'
         ]);
     }
 

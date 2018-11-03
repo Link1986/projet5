@@ -3,6 +3,7 @@
 {% block title %}
     {{ parent() }} - Accueil
 {% endblock %}
+
 {% block body %}
     {% block todoproject_body %}
 
@@ -157,7 +158,7 @@
                 <div class="row no-gutter">
                     <div class="flexslider">
                         <ul class="slides">
-                            <li>
+                            <li class="d-flex flex-row">
                                 <div class="col-md-6">
                                     <div class="avatar">
                                         <img src="{{ asset('build/images/testimonial-1.jpg') }}" alt="" class="img-responsive">
@@ -171,7 +172,7 @@
                                     </blockquote>
                                 </div>
                             </li>
-                            <li>
+                            <li class="d-flex flex-row">
                                 <div class="col-md-6">
                                     <div class="avatar">
                                         <img src="{{ asset('build/images/testimonial-2.jpg') }}" alt="" class="img-responsive">
