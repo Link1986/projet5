@@ -14,12 +14,12 @@ $(document).ready(function() {
 	$(".work").waypoint(function() {
 		$(".work").addClass("animated fadeIn");
 	}, {
-		offset: '75%'
+		offset: "75%"
 	});
 	$(".download").waypoint(function() {
 		$(".download .btn").addClass("animated tada");
 	}, {
-		offset: '75%'
+		offset: "75%"
 	});
 
 	// Fancybox
@@ -33,26 +33,26 @@ $(document).ready(function() {
 
 	// Page Scroll
 	var sections = $("section");
-		nav = $('nav[role="navigation"]');
+		nav = $("nav[role=\"navigation\"]");
 
 	$(window).on("scroll", function () {
-	  	var cur_pos = $(this).scrollTop();
-	  	sections.each(function() {
+		var cur_pos = $(this).scrollTop();
+		sections.each(function() {
 	    	var top = $(this).offset().top - 76;
 	        	bottom = top + $(this).outerHeight();
 	    	if (cur_pos >= top && cur_pos <= bottom) {
 	      		nav.find("a").removeClass("active");
 	      		nav.find('a[href="#'+$(this).attr('id')+'"]').addClass("active");
 	    	}
-	  	});
+		});
 	});
 	nav.find("a").on("click", function () {
-	  	var $el = $(this);
-	    	id = $el.attr("href");
+		var $el = $(this);
+			id = $el.attr("href");
 		$("html, body").animate({
 			scrollTop: $(id).offset().top - 75
 		}, 500);
-	  return false;
+		return false;
 	});
 
 	// Mobile Navigation
