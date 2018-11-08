@@ -20,7 +20,7 @@ Encore
 
     //JAVASCRIPT
     .addEntry("js/flexslider", "./assets/js/jquery.flexslider-min.js")
-    .addEntry("js/fancybox", "./assets/js/jquery.fancybox.pack.js")
+    .addEntry("js/fancybox", "./assets/js/jquery.fancybox.min.js")
     .addEntry("js/waypoints", "./assets/js/jquery.waypoints.min.js")
     .addEntry("js/retina", "./assets/js/retina.min.js")
     .addEntry("js/main", "./assets/js/main.js")
@@ -59,7 +59,7 @@ Encore
     //CSS
     .addStyleEntry("css/flexslider", "./assets/css/flexslider.css")
     .addStyleEntry("css/animate", "./assets/css/animate.min.css")
-    .addStyleEntry("css/fancybox", "./assets/css/jquery.fancybox.css")
+    .addStyleEntry("css/fancybox", "./assets/css/jquery.fancybox.min.css")
     .addStyleEntry("css/main", "./assets/css/main.css")
     .addStyleEntry("css/responsive", "./assets/css/responsive.css")
     .addStyleEntry("css/member", "./assets/css/member.css")
