@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eae9fc209c282f2778db2e774bc6c4a",
+    "content-hash": "1b90d4f74c13e2ab16386a96980da7fa",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4931,6 +4931,38 @@
                 "tls"
             ],
             "time": "2018-08-08T08:57:40+00:00"
+        },
+        {
+            "name": "deployer/dist",
+            "version": "v6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/distribution.git",
+                "reference": "eec133237328f86c52c7d8480b5845281633ef3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/distribution/zipball/eec133237328f86c52c7d8480b5845281633ef3f",
+                "reference": "eec133237328f86c52c7d8480b5845281633ef3f",
+                "shasum": ""
+            },
+            "bin": [
+                "dep"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io"
+                }
+            ],
+            "description": "Deployer Phar Distribution",
+            "homepage": "https://deployer.org",
+            "time": "2018-08-27T07:06:35+00:00"
         },
         {
             "name": "easycorp/easy-log-handler",

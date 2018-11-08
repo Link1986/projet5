@@ -30,8 +30,8 @@ class TodoController extends AbstractController
     }
 
     /**
- * @Route("/member", name="member")
- */
+    * @Route("/member", name="member")
+    */
     public function member()
     {
         return $this->render('todo/member.html.twig', [
@@ -52,63 +52,63 @@ class TodoController extends AbstractController
 
             if($request->isXmlHttpRequest()) {
 
-                if ($request->request->get('addAjax')) {
+                if ($request->request->get('addTodo')) {
 
                     $todo = new Todo();
-                    $addAjax = $request->request->get('addAjax');
+                    $addTodo = $request->request->get('addTodo');
 
 
-                    if ($addAjax !== "") {
-                        $addAjax = $request->request->get('addAjax');
+                    if ($addTodo !== "") {
+                        $addTodo = $request->request->get('addTodo');
                     }
 
                     $manager = $this->getDoctrine()->getManager();
                     $todo->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
-                    $todo->setList($addAjax);
+                    $todo->setList($addTodo);
                     $todo->setChecked(false);
                     $manager->persist($todo);
                     $manager->flush();
 
                 }
 
-                if($request->request->get('modifyAjax')){
+                if($request->request->get('modifyTodo')){
 
-                    $modifyAjax = $request->request->get('modifyAjax');
-                    $modifyAjaxId = $request->request->get('modifyAjaxId');
+                    $modifyTodo = $request->request->get('modifyTodo');
+                    $modifyTodoId = $request->request->get('modifyTodoId');
 
-                    if ($modifyAjax !== "") {
-                        $modifyAjax = $request->request->get('modifyAjax');
+                    if ($modifyTodo !== "") {
+                        $modifyTodo = $request->request->get('modifyTodo');
                     }
 
                     $manager = $this->getDoctrine()->getManager();
-                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($modifyAjaxId));
-                    $todo->setList($modifyAjax);
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($modifyTodoId));
+                    $todo->setList($modifyTodo);
                     $manager->flush();
 
                 }
 
-                if($request->request->get('suppressAjax')){
+                if($request->request->get('suppressTodo')){
 
-                    $suppressAjax = $request->request->get('suppressAjax');
+                    $suppressTodo = $request->request->get('suppressTodo');
 
                     $manager = $this->getDoctrine()->getManager();
-                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($suppressAjax));
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($suppressTodo));
                     $manager->remove($todo);
                     $manager->flush();
 
                 }
 
-                if($request->request->get('checkedAjax')){
+                if($request->request->get('checkedTodo')){
 
-                    $valAjax = $request->request->get('valAjax');
-                    $checkedAjax = false;
-                    if (isset($checkedAjax)) {
-                        $checkedAjax = $request->request->get('checkedAjax');
+                    $valTodo = $request->request->get('valTodo');
+                    $checkedTodo = false;
+                    if (isset($checkedTodo)) {
+                        $checkedTodo = $request->request->get('checkedTodo');
                     }
 
                     $manager = $this->getDoctrine()->getManager();
-                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($valAjax));
-                    $todo->setChecked(filter_var( $checkedAjax, FILTER_VALIDATE_BOOLEAN));
+                    $todo = $manager->getRepository('App\Entity\Todo')->find(intval($valTodo));
+                    $todo->setChecked(filter_var( $checkedTodo, FILTER_VALIDATE_BOOLEAN));
                     $manager->flush();
 
                 }

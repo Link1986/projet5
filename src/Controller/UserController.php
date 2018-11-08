@@ -11,7 +11,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
 class UserController extends AbstractController
 {
     /**
@@ -26,6 +25,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+
             $passwordHash = $encoder->encodePassword($user, $user->getPassword());
 
             $user->setPassword($passwordHash);
@@ -70,7 +70,7 @@ class UserController extends AbstractController
     /**
      * @Route("member/profile/user_delete/{id}", name="user_delete")
      */
-    public function userDelete(Request $request, User $user)
+    public function userDelete(User $user)
     {
 
         $manager = $this->getDoctrine()->getManager();

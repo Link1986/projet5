@@ -418,11 +418,11 @@ div.card-body.carte {
 input#user_email.my-2.form-control, input#user_username.my-2.form-control,
 input#user_password.my-2.form-control, input#user_conform_password.my-2.form-control, input.form-control.login_user, input.form-control.login_pass,
 input#todo_list.form-control {
-    width: 70vw !important;
+    width: 70vw ;
 }
 
 input#bookmarks_url.form-control {
-    width: 70vw !important;
+    width: 70vw;
 }
 
 div.alert.alert-success.modify_todo {
