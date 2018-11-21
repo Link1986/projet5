@@ -2,7 +2,7 @@ var Encore = require("@symfony/webpack-encore");
 
 Encore
     // directory where compiled assets will be stored
-    .setOutputPath("public/build/")
+    .setOutputPath("web/build/")
     // public path used by the web server to access the output path
     .setPublicPath("/build")
     // only needed for CDN"s or sub-directory deploy
@@ -28,33 +28,6 @@ Encore
     .addEntry("js/quote", "./assets/js/quote.js")
     //.addEntry("page1", "./assets/js/page1.js")
     //.addEntry("page2", "./assets/js/page2.js")
-
-    //IMAGES
-    .addEntry("apple-icon-180x180", "./assets/images/apple-icon-180x180.png")
-    .addEntry("android-icon-192x192", "./assets/images/android-icon-192x192.png")
-    .addEntry("favicon-32x32", "./assets/images/favicon-32x32.png")
-    .addEntry("favicon-96x96", "./assets/images/favicon-96x96.png")
-    .addEntry("favicon-16x16", "./assets/images/favicon-16x16.png")
-    .addEntry("logo", "./assets/images/logo.png")
-    .addEntry("work-1", "./assets/images/work-1.jpg")
-    .addEntry("work-2", "./assets/images/work-2.jpg")
-    .addEntry("work-3", "./assets/images/work-3.jpg")
-    .addEntry("work-4", "./assets/images/work-4.jpg")
-    .addEntry("work-5", "./assets/images/work-5.jpg")
-    .addEntry("work-6", "./assets/images/work-6.jpg")
-    .addEntry("work-7", "./assets/images/work-7.jpg")
-    .addEntry("work-8", "./assets/images/work-8.jpg")
-    .addEntry("testimonial-1", "./assets/images/testimonial-1.jpg")
-    .addEntry("testimonial-2", "./assets/images/testimonial-2.jpg")
-    .addEntry("member", "./assets/images/member.jpg")
-    .addEntry("todo", "./assets/images/todo.jpg")
-    .addEntry("bookmarks", "./assets/images/bookmarks.jpg")
-    .addEntry("projets", "./assets/images/projets.jpg")
-    .addEntry("profil", "./assets/images/profil.jpg")
-    .addEntry("checklist", "./assets/images/checklist.jpg")
-    .addEntry("book", "./assets/images/book.jpg")
-    .addEntry("paper", "./assets/images/paper.jpg")
-    .addEntry("computer", "./assets/images/computer.jpg")
 
     //CSS
     .addStyleEntry("css/flexslider", "./assets/css/flexslider.css")

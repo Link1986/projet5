@@ -1,0 +1,135 @@
+{% extends "OCProjectBundle::template.html.twig" %}
+
+{% block title %}{{ parent() }} - Espace membre{% endblock %}
+
+{% block stylesheets %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('images/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/flexslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/fancybox.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/member.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/quote.css') }}">
+{% endblock %}
+
+{% block header %}
+    <div class="header-content clearfix">
+        <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
+        <nav class="navigation" role="navigation">
+            <ul class="primary-nav">
+                <li><a href="{{ path('oc_project_home') }}">Accueil</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a class="admin" href="{{ path('oc_project_admin') }}"><i class="fas fa-user-circle yellow"></i>Espace Admin</a></li>
+                {% endif %}
+                <li><a  class="espace" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></li>
+                <li><a class="deconnect" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle">Menu<span></span></a>
+    </div><!-- header content -->
+{% endblock %}
+
+{% block body %}
+    <div class="container d-flex justify-content-center title">
+        <h2  class="text-white text-center my-5" >Bienvenu, ici se trouve un ensemble de services destinés à nos membres</h2>
+    </div>
+    <div class="container images">
+        <img src="{{ asset('images/member.jpg') }}" class="img-thumbnail" alt="">
+    </div>
+    <div class="container">
+        <h3 class="text-center font-weight-bold my-4">Bienvenu dans votre espace membre</h3>
+
+        <p class="text-center text-white font-weight-bold my-3"><i class="fas fa-user-circle mr-1"></i>{{ app.user.username }}</p>
+    </div>
+    <div class="container my-4">
+        <div class="card text-white bg-dark mb-3 carte">
+            <div class="card-header text-center col-sm-12 titre">Citation du jour</div>
+            <div class="card-body">
+                <p id="quote" class="card-text text-center text-white"></p><br>
+                <h5 id ="author" class="card-title text-center text-white"></h5><br>
+                <div class="d-flex justify-content-center" ><button id ="button" type="button" class="btn my-3">Afficher une citation</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-3">
+        <h3 class="text-center font-weight-bold">Voici la liste des services qui vous sont proposés</h3>
+    </div>
+    <div class="container">
+        <div class="row content">
+
+            <div class="sm-col-6 contenu">
+                <div class="card activite my-3 gauche">
+                    <img class="card-img-top" src="{{ asset('images/todo.jpg') }}" alt="">
+                    <div class="card-body carte">
+                        <h4 class="card-title titre text-center">Liste de tâches</h4>
+                        <p class="card-text description text-center">Un outil qui vous permet de créer des listes de tâches à effectuer.</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('oc_project_todo') }}" class="btn btn-primary m_bouton">Liste de tâches</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sm-col-6 contenu">
+                <div class="card activite my-3 droite">
+                    <img class="card-img-top" src="{{ asset('images/bookmarks.jpg') }}" alt="">
+                    <div class="card-body carte">
+                        <h4 class="card-title titre text-center">Liens favoris</h4>
+                        <p class="card-text description text-center">Vous pourrez y inscrire l'ensemble de vos sites favoris.</p>
+
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('oc_project_bookmarks') }}" class="btn btn-primary m_bouton">Liens favoris</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row content">
+
+            <div class="sm-col-6 contenu">
+                <div class="card activite my-3 gauche">
+                    <img class="card-img-top" src="{{ asset('images/projets.jpg') }}" alt="">
+                    <div class="card-body carte">
+                        <h4 class="card-title titre text-center">Projets</h4>
+                        <p class="card-text description text-center">Vous pourrez créer des projets et organiser leur suivi en ligne.</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('oc_project_projets') }}" class="btn btn-primary m_bouton">Projets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sm-col-6 contenu">
+                <div class="card activite my-3 droite">
+                    <img class="card-img-top" src="{{ asset('images/profil.jpg') }}" alt="">
+                    <div class="card-body carte">
+                        <h4 class="card-title titre text-center">Profil</h4>
+                        <p class="card-text description text-center">Accéder à votre profil, afin de consulter et modifier vos informations.</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('oc_project_profil') }}" class="btn btn-primary m_bouton">Profil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/js/flexslider.js') }}"></script>
+    <script src="{{ asset('build/js/fancybox.js') }}"></script>
+    <script src="{{ asset('build/js/waypoints.js') }}"></script>
+    <script src="{{ asset('build/js/retina.js') }}"></script>
+    <script src="{{ asset('build/js/main.js') }}"></script>
+    <script src="{{ asset('build/js/quote.js') }}"></script>
+{% endblock %}

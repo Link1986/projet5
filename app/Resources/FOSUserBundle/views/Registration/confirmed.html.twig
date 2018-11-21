@@ -1,0 +1,25 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %} {{ parent() }} - Inscription confirmée {% endblock %}
+
+{% block fos_user_content %}
+
+<div class="container-fluid d-flex flex-column">
+
+    <div class="container-fluid d-flex justify-content-center my-2">
+        <p class="text-white font-weight-bold">
+            {{ 'registration.confirmed'|trans({'%username%': user.username}) }}
+        </p>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center my-3">
+        <a type="button" href="{{ path('oc_project_member') }}" class="btn btn-light">
+            Accéder à l'espace membre
+        </a>
+    </div>
+
+</div>
+
+{% endblock fos_user_content %}

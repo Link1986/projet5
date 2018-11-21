@@ -1,3 +1,11 @@
+/* ----- Main CSS ----- */
+
+html, body {
+    max-width: 100vw;
+    margin: 0;
+    overflow-x:hidden;
+}
+
 section.banner {
     max-width: 100vw;
     height: auto;
@@ -6,42 +14,9 @@ section.banner {
     overflow-x:hidden;
  }
 
-body {
-    width: 100vw;
-    margin: 0;
-    overflow-x:hidden;
-}
-
-div.row.colonne {
-    height: auto;
-    margin-top: -100px;
-}
-
-div.card.bureau {
-    overflow: hidden;
-    max-width: 705px;
-    margin-top: 0;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-
 img.card-img-top.image {
     min-width: 100%;
     height: 467px;
-}
-
-h3.card-title.text-center.titre_membre {
-    font-family: 'Lobster', cursive;
-    color: #000;
-    font-size: 2.2em;
-}
-
-p.card-text.text-center.p_membre.my-2 {
-    font-family: 'Lobster', cursive;
-    color: #623c87;
-    font-size: 1.9em;
 }
 
 h2.text-center {
@@ -58,6 +33,14 @@ h3.text-center.services {
     color: #fb6a4c;
 }
 
+.logo {
+    color: #66697e;
+    font-family: 'Bree Serif', serif;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 5px;
+}
+
 a.deconnect {
     color: #e84545;
 }
@@ -67,23 +50,10 @@ a.espace {
 }
 
 a.admin {
-    color: #e8d2b2;
+    color: #fb6a4c;
 }
 
-.logo {
-    color: #66697e;
-    font-family: 'Bree Serif', serif;
-    font-weight: bold;
-    font-size: 2rem;
-    letter-spacing: 5px;
-}
-
-div.menu {
-    position: absolute;
-    margin-top: 550px;
-    font-family: 'Song Myung', serif;
-    font-size: 27px;
-}
+/* ----- Top menu CSS ----- */
 
 div.container.d-flex.justify-content-center.title {
     margin-top: 200px;
@@ -117,36 +87,12 @@ p.card-text.description {
     height: 135px;
 }
 
-/*Espace liste des tâches*/
-
 h2.text-white.text-center.container.my-5 {
     margin-top: 30px;
     font-family: 'Lobster', cursive;
 }
 
-div.container.sm-col-10.card.contenant {
-    border: 2px solid rgb(0, 0, 0);
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding-left: 0;
-    padding-right: 0;
-    position: absolute;
-    margin: 325px auto;
-    overflow:hidden;
-    background: linear-gradient(#DCDCDC, #D3D3D3, #778899, #C0C0C0);
-}
-
-div.container.sm-col-10.card.contenant.carte {
-    border: 2px solid rgb(0, 0, 0);
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding-left: 0;
-    padding-right: 0;
-    position: absolute;
-    margin: 100px auto;
-    overflow:hidden;
-    background: linear-gradient(#DCDCDC, #D3D3D3, #778899, #C0C0C0);
-}
+/* ----- Member CSS ----- */
 
 div.form-group.d-flex.justify-content-center {
     flex-direction: column;
@@ -211,54 +157,6 @@ a.btn.d-flex.justify-content-center.text-center {
     margin-left: 20px;
 }
 
-button#form_ajouter, button#form_modifier, button#form_supprimer, button#form_cocher {
-    background-color: #45139E;
-    color: white;
-    font-weight: bold;
-    font-family: Acme;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-button#form_ajouter:hover, button#form_modifier:hover, button#form_supprimer:hover, button#form_cocher:hover {
-    background-color: #FF0DFF;
-}
-
-a.d-flex.justify-content-center.my-3 {
-    background-color: #45139E;
-    border-color:  #45139E;
-    color: white;
-    font-weight: bold;
-    font-family: Acme;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-a.d-flex.justify-content-center.my-3:hover {
-    background-color: #FF0DFF;
-    border-color: #FF0DFF;
-}
-
-a.btn.btn-success.d-flex.justify-content-center.cocher {
-    background-color: #7E28FF;
-    color: white;
-    font-weight: bold;
-    margin-left: 10px;
-    font-family: Acme;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-a.btn.btn-success.d-flex.justify-content-center.cocher:hover {
-    background-color: #FF0DFF;
-}
-
 div.checkbox {
     display: flex;
     justify-content: center;
@@ -266,7 +164,6 @@ div.checkbox {
     color: #fb6a4c;
     font-size: 25px;
     font-weight: bold;
-
 }
 
 input#form_checked {
@@ -320,24 +217,6 @@ div.my-3.container.d-flex.justify-content-center.retour {
 a.container-fluid.text-center.titre {
     height: auto;
     display: inline-block;
-}
-
-div.card.carte {
-    background: linear-gradient(#DCDCDC, #D3D3D3, #778899, #C0C0C0);
-    border: 2px solid rgb(0, 0, 0);
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-a.btn.btn-primary.my-3.d-flex.justify-content-center {
-    background-color: #45139e;
-    color: white;
-    font-weight: bold;
-    font-family: Acme;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
 a.btn.btn-primary.m_bouton, button.add_todo, button.add_todo:hover, button#project_submit, button#project_submit:hover  {
@@ -415,14 +294,20 @@ div.card-body.carte {
     height: 300px;
 }
 
+
+
 input#user_email.my-2.form-control, input#user_username.my-2.form-control,
 input#user_password.my-2.form-control, input#user_conform_password.my-2.form-control, input.form-control.login_user, input.form-control.login_pass,
 input#todo_list.form-control {
-    width: 70vw ;
+    width: 70% ;
 }
 
 input#bookmarks_url.form-control {
-    width: 70vw;
+    width: 70%;
+}
+
+input#form_list.form-control, input#form_url.form-control, input#form_title.form-control, textarea#form_content.form-control {
+    max-width: 100vw;
 }
 
 div.alert.alert-success.modify_todo {
@@ -495,11 +380,3 @@ div.alert.alert-success.modify_todo.modify_account {
     border: 2px solid #49423c;
     width: 70vw;
 }
-
-
-
-
-
-
-
-

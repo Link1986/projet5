@@ -1,0 +1,44 @@
+oc_project_home:
+    path:      /
+    defaults:
+        _controller: OCProjectBundle:Project:index
+
+oc_project_member:
+    path:      /member
+    defaults:
+        _controller: OCProjectBundle:Project:member
+
+oc_project_admin:
+    path:      admin
+    defaults:
+        _controller: OCUserBundle:User:admin
+
+oc_project_todo:
+    path:      member/todolist
+    defaults:
+        _controller: OCProjectBundle:Project:todo
+
+oc_project_bookmarks:
+    path:      member/bookmarks
+    defaults:
+        _controller: OCProjectBundle:Project:bookmarks
+
+oc_project_projets:
+    path:      member/projets
+    defaults:
+        _controller: OCProjectBundle:Project:projet
+
+oc_project_profil:
+    path:      member/profil
+    defaults:
+        _controller: OCProjectBundle:Project:profil
+
+oc_project_suppressaccount:
+    path:      member/profil/suppressaccount
+    defaults:
+        _controller: OCProjectBundle:Project:suppressaccount
+
+oc_project_userdelete:
+    path:      member/profil/userdelete/{id}
+    defaults:
+        _controller: OCUserBundle:User:userdelete

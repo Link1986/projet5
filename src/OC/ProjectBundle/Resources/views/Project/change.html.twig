@@ -1,0 +1,62 @@
+{% extends "OCProjectBundle::template.html.twig" %}
+
+{% block header %}
+    <div class="header-content clearfix">
+        <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
+        <nav class="navigation" role="navigation">
+            <ul class="primary-nav">
+                <span><a href="{{ path('oc_project_home') }}">Accueil</a></span>
+                <span><a href="{{ path('oc_project_member') }}">Espace membre</a></span>
+                <span><a href="{{ path('oc_project_projets') }}">Projets</a></span>
+                <span><a  class="connexion" href=""><i class="fas fa-user vert"></i>{{ app.user.username }}</a></span>
+                <span><a class="deconnexion" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-user rouge"></i>Se déconnecter</a></span>
+            </ul>
+        </nav>
+        <a href="#" class="nav-toggle">Menu<span></span></a>
+    </div><!-- header content -->
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center one">
+
+            <div class="container sm-col-10 card contenant carte">
+                <img class="card-img-top checklist" src="{{ asset('images/paper.jpg') }}" alt="">
+                <div class="card-body corps">
+
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+                    {{ form_errors(form) }}
+
+                    <div class="form-group d-flex justify-content-center">
+
+                        <h3 class="text-center font-weight-bold">{{ form_label(form.title, "Titre du projet")}}</h3>
+
+                        {{ form_errors(form.title) }}
+
+                        <div class="col-sm-10 container">
+                            {{ form_widget(form.title, {'attr': {'placeholder': 'ajouter un projet'}}) }}
+                        </div>
+                        <h3 class="text-center font-weight-bold">{{ form_label(form.content, "Contenu du projet")}}</h3>
+                        {{ form_errors(form.content) }}
+                        <div class="col-sm-10 container-fluid">
+                            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-sm-10 container d-flex justify-content-center">
+                            <span class="d-flex justify-content-center my-3">{{ form_widget(form.modifier) }}</span>
+                        </div>
+                        <div class="my-3 container d-flex justify-content-center retour"><i class="far fa-arrow-alt-circle-left mr-2 mt-3" ></i><a href="{{ path('oc_project_list') }}">Retourner aux projets</a></div>
+                    </div>
+
+                    </div>
+
+                    {{ form_rest(form) }}
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
