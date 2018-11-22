@@ -157,6 +157,13 @@ a.btn.d-flex.justify-content-center.text-center {
     margin-left: 20px;
 }
 
+a.btn.d-flex.justify-content-center.text-center.my-2.delete.suppress {
+    background-color: #e8d2b2;
+    color: #e84545;
+    font-family: 'Noto Serif', serif;
+    margin-left: 20px;
+}
+
 div.checkbox {
     display: flex;
     justify-content: center;

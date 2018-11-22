@@ -1,3 +1,5 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64ba1f5c7564d8492f91701c273976c)](https://www.codacy.com/app/Link1986/projet5?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Link1986/projet5&amp;utm_campaign=Badge_Grade)
+
 OC - Projet 5
 Création d'un gestionnaire de liste de tâches avec Symfony
 
