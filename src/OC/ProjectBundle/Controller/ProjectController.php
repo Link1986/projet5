@@ -212,82 +212,6 @@ class ProjectController extends Controller
 
     }
 
-    public function modifyAction(Request $request, Bookmarks $bookmarks)
-    {
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $bookmarks)
-            ->add('url',      TextType::class)
-            ->add('modifier',      SubmitType::class)
-            ->getForm()
-        ;
-
-        if ($request->isMethod('POST')) {
-
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-
-                $em = $this->getDoctrine()->getManager();
-
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-                return $this->redirectToRoute('oc_project_bookmarks');
-            }
-        }
-
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OCProjectBundle:Bookmarks')
-        ;
-
-        $listAdverts = $repository->myFindAll();
-
-        return $this->render('OCProjectBundle:Project:modify.html.twig', array(
-            'form' => $form->createView(),
-            'listAdverts' => $listAdverts,
-        ));
-    }
-
-    public function suppressAction(Request $request, Bookmarks $bookmarks)
-    {
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $bookmarks)
-            ->add('url',      TextType::class)
-            ->add('supprimer',      SubmitType::class)
-            ->getForm()
-        ;
-
-        if ($request->isMethod('POST')) {
-
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($bookmarks);
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien supprimée.');
-
-                return $this->redirectToRoute('oc_project_bookmarks');
-            }
-        }
-
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OCProjectBundle:Bookmarks')
-        ;
-
-        $listAdverts = $repository->myFindAll();
-
-        return $this->render('OCProjectBundle:Project:suppress.html.twig', array(
-            'form' => $form->createView(),
-            'listAdverts' => $listAdverts,
-        ));
-    }
-
     public function projetAction(Request $request)
     {
         $projet = new Projet();
@@ -314,7 +238,7 @@ class ProjectController extends Controller
                 }
 
                 $manager = $this->getDoctrine()->getManager();
-                $projet->setUserProject($this->get('security.token_storage')->getToken()->getUser()->getId());
+                $projet->setUserProjet($this->get('security.token_storage')->getToken()->getUser()->getId());
                 $projet->setTitle($addTitle);
                 $projet->setContent($addContent);
                 $manager->persist($projet);
@@ -376,99 +300,6 @@ class ProjectController extends Controller
             'listAllProject' => $listAllProject
         ]);
 
-    }
-
-    public function listAction()
-    {
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OCProjectBundle:Projet')
-        ;
-
-        $listProjet = $repository->FindByUser($this->get('security.token_storage')->getToken()->getUser()->getId());
-
-        return $this->render('OCProjectBundle:Project:list.html.twig', array(
-            'listProjet' => $listProjet
-        ));
-    }
-
-    public function changeAction(Request $request, Projet $projet)
-    {
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $projet)
-            ->add('title',     TextType::class)
-            ->add('content',   TextareaType::class)
-            ->add('modifier',      SubmitType::class)
-            ->getForm()
-        ;
-
-        if ($request->isMethod('POST')) {
-
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-
-                $em = $this->getDoctrine()->getManager();
-
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
-
-                return $this->redirectToRoute('oc_project_list');
-            }
-        }
-
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OCProjectBundle:Projet')
-        ;
-
-        $listProjet = $repository->myFindAll();
-
-        return $this->render('OCProjectBundle:Project:change.html.twig', array(
-            'form' => $form->createView(),
-            'listProjet' => $listProjet,
-        ));
-    }
-
-    public function eraseAction(Request $request, Projet $projet)
-    {
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $projet)
-            ->add('title',     TextType::class)
-            ->add('content',   TextareaType::class)
-            ->add('supprimer',      SubmitType::class)
-            ->getForm()
-        ;
-
-        if ($request->isMethod('POST')) {
-
-            $form->handleRequest($request);
-
-            if ($form->isValid()) {
-
-                $em = $this->getDoctrine()->getManager();
-                $em->remove($projet);
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien supprimée.');
-
-                return $this->redirectToRoute('oc_project_list');
-            }
-        }
-
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('OCProjectBundle:Projet')
-        ;
-
-        $listProjet = $repository->myFindAll();
-
-        return $this->render('OCProjectBundle:Project:erase.html.twig', array(
-            'form' => $form->createView(),
-            'listProjet' => $listProjet,
-        ));
     }
 
     public function profilAction(Request $request)

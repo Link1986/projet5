@@ -65,7 +65,7 @@
             <constraint name="Length">
                 <option name="min">8</option>
                 <option name="max">4096</option>
-                <option name="minMessage">fos_user.password.short</option>
+                <option name="minMessage">Le mot de passe doit faire un minimum de 8 caractères.</option>
                 <option name="groups">
                     <value>myRegistration</value>
                     <value>Profile</value>

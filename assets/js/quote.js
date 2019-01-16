@@ -1,8 +1,8 @@
-var Generator = {
+const Generator = {
 
     getRandom: function() {
 
-        var quotes = [
+        let quotes = [
             {
                 content: "Exige beaucoup de toi-même et attends peu des autres. Ainsi beaucoup d'ennuis te seront épargnés.",
                 author: "Confucius"
@@ -80,12 +80,12 @@ var Generator = {
 
         ];
 
-        var getQuote = document.getElementById("quote");
-        var getAuthor = document.getElementById("author");
-        var button = document.getElementById("button");
+        const getQuote = document.getElementById("quote");
+        const getAuthor = document.getElementById("author");
+        const button = document.getElementById("button");
 
-        var randNum;
-        var displayedQuote;
+        const randNum;
+        const displayedQuote;
 
         randNum = Math.floor(Math.random() * quotes.length);
 

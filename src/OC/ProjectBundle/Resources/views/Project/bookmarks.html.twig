@@ -102,9 +102,9 @@
     <script>
         $( document ).ready(function() {
 
-            $(document).on("click","button#bookmarks_submit",function(){
+            $(document).on("click","button#form_submit",function(){
 
-                const addBookmarks = $( "input#bookmarks_url" ).val();
+                const addBookmarks = $( "input#form_url" ).val();
 
                 $("ul.container.my-3.liste").append("<li class=\" my-2 font-weight-bold text-center\">\n" +
                     "\n" +
@@ -115,7 +115,7 @@
                     "\n" +
                     "                <div class=\"lien\" >\n" +
                     "\n" +
-                    "                    <a type=\"button\" class=\"btn d-flex justify-content-center my-2\" >\n" +
+                    "                    <a type=\"button\" class=\"btn d-flex justify-content-center my-2 modify_profile\" >\n" +
                     "                        <i class=\"fas fa-edit  mr-1 mt-1\"></i>modifier\n" +
                     "                    </a>\n" +
                     "\n" +
@@ -129,7 +129,7 @@
                     "\n" +
                     "                    <div class=\"alert alert-success modify_todo\" role=\"alert\" style=\"height: auto;\">\n" +
                     "                        <h5 class=\"modify_title\">Modifier mon lien</h5>\n" +
-                    "                        <input type=\"text\" class=\"form-control\" value=\"http://www.\">\n" +
+                    "                        <input type=\"text\" class=\"form-control\">\n" +
                     "                        <button class=\"btn btn-success mt-2 mod_button\" id=\"{{ maxValue }}\">Modifier</button>\n" +
                     "                    </div>\n" +
                     "\n" +
@@ -163,6 +163,10 @@
 
             $("div.result").hide();
 
+            $( "button.btn.btn-success.mt-2" ).each(function() {
+                $(this).prev("input.form-control").val($(this).parent().parent().parent().find("a.lien").text());
+            });
+
             $(document).on("click","a.btn.d-flex.justify-content-center.my-2",function() {
                 $(this).parent().next().toggle();
             });
@@ -172,29 +176,29 @@
                 const modifyBookmarks = $(this).prev("input.form-control").val();
                 const modifyIdBookmarks = $(this).attr('id');
 
-                if (modifyBookmarks ===  ""){
+                if (modifyBookmarks !==  ""){
                     //Do nothing
-                }
-                else {
                     let test = $(this).parent().parent().parent().find("a.lien").html($(this).prev("input.form-control").val());
 
                     $(this).parent().parent().parent().find("a.lien").attr('href', test.text());
+
+                    $.ajax({
+                        url: "{{ (path('oc_project_bookmarks')) }}",
+                        type: "POST",
+                        dataType: "json",
+                        data: {
+                            "modifyBookmarks": modifyBookmarks,
+                            "modifyIdBookmarks": modifyIdBookmarks
+                        },
+                        async: true,
+                        success: function (data) {
+
+                        }
+
+                    });
                 }
 
-                $.ajax({
-                    url: "{{ (path('oc_project_bookmarks')) }}",
-                    type: "POST",
-                    dataType: "json",
-                    data: {
-                        "modifyBookmarks": modifyBookmarks,
-                        "modifyIdBookmarks": modifyIdBookmarks
-                    },
-                    async: true,
-                    success: function (data) {
-
-                    }
-
-                });
+                return false;
 
             });
 
