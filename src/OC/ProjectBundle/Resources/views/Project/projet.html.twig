@@ -113,12 +113,21 @@
     <script>
         $( document ).ready(function() {
 
+            let count = 0;
+
             $(document).on("click","button#form_submit",function(){
 
                 const addTitle = $( "input#form_title" ).val();
                 const addContent = $( "textarea#form_content" ).val();
 
                 if(addTitle !== "" && addContent !== "") {
+
+                    if(parseInt($('ul.container.my-3.liste').children('li').length) < 1) {
+                        count = parseInt($('ul.container.my-3.liste').children('li').length) + 1;
+                    }
+                    else {
+                        count = parseInt($('ul.container.my-3.liste').children('li').last().find("a.btn.d-flex.justify-content-center.text-center ").attr('id')) + 1;
+                    }
 
                     $("ul.container.my-3.liste").append("<li class=\" my-2 font-weight-bold text-center\">\n" +
                         "\n" +
@@ -136,7 +145,7 @@
                         "                        <i class=\"fas fa-edit  mr-1 mt-1\"></i>modifier\n" +
                         "                    </a>\n" +
                         "\n" +
-                        "                    <a type=\"button\" class=\"btn d-flex justify-content-center text-center my-2 delete\" id=\"{{ maxValue }}\">\n" +
+                        "                    <a type=\"button\" class=\"btn d-flex justify-content-center text-center my-2 delete\" id=" +count+ ">\n" +
                         "                        <i class=\"fas fa-window-close  mr-2 mt-1\"></i> supprimer\n" +
                         "                    </a><br>\n" +
                         "\n" +
@@ -149,7 +158,7 @@
                         "                        <input type=\"text\" class=\"form-control\">\n" +
                         "                        <h5 class=\"modify_title my-1\">Modifier ma description</h5>\n" +
                         "                        <textarea  rows=\"2\" cols=\"50\" class=\"form-control\"></textarea>\n" +
-                        "                        <button class=\"btn btn-success mt-2 mod_button\" id=\"{{ maxValue }}\">Modifier</button>\n" +
+                        "                        <button class=\"btn btn-success mt-2 mod_button\" id=" +count+ ">Modifier</button>\n" +
                         "                    </div>\n" +
                         "\n" +
                         "                </div>\n" +

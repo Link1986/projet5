@@ -50,14 +50,13 @@ class ProjectController extends Controller
 
                 if ($addTodo !== "") {
                     $addTodo = $request->request->get('addTodo');
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+                    $todo->setList($addTodo);
+                    $todo->setChecked(false);
+                    $manager->persist($todo);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $todo->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
-                $todo->setList($addTodo);
-                $todo->setChecked(false);
-                $manager->persist($todo);
-                $manager->flush();
 
             }
 
@@ -68,12 +67,11 @@ class ProjectController extends Controller
 
                 if ($modifyTodo !== "") {
                     $modifyTodo = $request->request->get('modifyTodo');
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo = $manager->getRepository('OCProjectBundle:Todo')->find(intval($modifyTodoId));
+                    $todo->setList($modifyTodo);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $todo = $manager->getRepository('OCProjectBundle:Todo')->find(intval($modifyTodoId));
-                $todo->setList($modifyTodo);
-                $manager->flush();
 
             }
 
@@ -91,15 +89,12 @@ class ProjectController extends Controller
             if($request->request->get('checkedTodo')){
 
                 $valTodo = $request->request->get('valTodo');
-                $checkedTodo = false;
-                if (isset($checkedTodo)) {
-                    $checkedTodo = $request->request->get('checkedTodo');
-                }
 
-                $manager = $this->getDoctrine()->getManager();
-                $todo = $manager->getRepository('OCProjectBundle:Todo')->find(intval($valTodo));
-                $todo->setChecked(filter_var( $checkedTodo, FILTER_VALIDATE_BOOLEAN));
-                $manager->flush();
+                    $checkedTodo = $request->request->get('checkedTodo');
+                    $manager = $this->getDoctrine()->getManager();
+                    $todo = $manager->getRepository('OCProjectBundle:Todo')->find(intval($valTodo));
+                    $todo->setChecked(filter_var( $checkedTodo, FILTER_VALIDATE_BOOLEAN));
+                    $manager->flush();
 
             }
 
@@ -149,29 +144,27 @@ class ProjectController extends Controller
 
                 if ($addBookmarks !== "") {
                     $addBookmarks = $request->request->get('addBookmarks');
+                    $manager = $this->getDoctrine()->getManager();
+                    $bookmarks->setUserBook($this->get('security.token_storage')->getToken()->getUser()->getId());
+                    $bookmarks->setUrl($addBookmarks);
+                    $manager->persist($bookmarks);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $bookmarks->setUserBook($this->get('security.token_storage')->getToken()->getUser()->getId());
-                $bookmarks->setUrl($addBookmarks);
-                $manager->persist($bookmarks);
-                $manager->flush();
 
             }
 
             if($request->request->get('modifyBookmarks')){
 
                 $modifyBookmarks = $request->request->get('modifyBookmarks');
-                $modifyIdBookmarks = $request->request->get('modifyIdBookmarks');
 
                 if ($modifyBookmarks !== "") {
                     $modifyBookmarks = $request->request->get('modifyBookmarks');
+                    $modifyIdBookmarks = $request->request->get('modifyIdBookmarks');
+                    $manager = $this->getDoctrine()->getManager();
+                    $bookmarks = $manager->getRepository('OCProjectBundle:Bookmarks')->find(intval($modifyIdBookmarks));
+                    $bookmarks->setUrl($modifyBookmarks);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $bookmarks = $manager->getRepository('OCProjectBundle:Bookmarks')->find(intval($modifyIdBookmarks));
-                $bookmarks->setUrl($modifyBookmarks);
-                $manager->flush();
 
             }
 
@@ -235,14 +228,13 @@ class ProjectController extends Controller
                 if ($addTitle !== "" && $addContent !== "") {
                     $addTitle = $request->request->get('addTitle');
                     $addContent = $request->request->get('addContent');
+                    $manager = $this->getDoctrine()->getManager();
+                    $projet->setUserProjet($this->get('security.token_storage')->getToken()->getUser()->getId());
+                    $projet->setTitle($addTitle);
+                    $projet->setContent($addContent);
+                    $manager->persist($projet);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $projet->setUserProjet($this->get('security.token_storage')->getToken()->getUser()->getId());
-                $projet->setTitle($addTitle);
-                $projet->setContent($addContent);
-                $manager->persist($projet);
-                $manager->flush();
 
             }
 
@@ -250,18 +242,17 @@ class ProjectController extends Controller
 
                 $modifyTitleProject = $request->request->get('modifyTitleProject');
                 $modifyContentProject = $request->request->get('modifyContentProject');
-                $modifyIdProject = $request->request->get('modifyIdProject');
 
                 if ($modifyTitleProject !== "" && $modifyContentProject !== "") {
+                    $modifyIdProject = $request->request->get('modifyIdProject');
                     $modifyTitleProject = $request->request->get('modifyTitleProject');
                     $modifyContentProject = $request->request->get('modifyContentProject');
+                    $manager = $this->getDoctrine()->getManager();
+                    $projet = $manager->getRepository('OCProjectBundle:Projet')->find(intval($modifyIdProject));
+                    $projet->setTitle($modifyTitleProject);
+                    $projet->setContent($modifyContentProject);
+                    $manager->flush();
                 }
-
-                $manager = $this->getDoctrine()->getManager();
-                $projet = $manager->getRepository('OCProjectBundle:Projet')->find(intval($modifyIdProject));
-                $projet->setTitle($modifyTitleProject);
-                $projet->setContent($modifyContentProject);
-                $manager->flush();
 
             }
 

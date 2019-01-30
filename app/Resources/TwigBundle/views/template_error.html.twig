@@ -1,10 +1,19 @@
 <!doctype html>
-<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gesty, Un outil qui vous permettra, de créer en ligne pas à pas vos listes de tâches à effectuer"/>
+    <meta name="keywords" content="Gesty, outil de liste de tâches, gestionnaire de projets, liens favoris, outils multitâches, gérer vos projets en ligne"/>
+    <meta name="robots" content="all"/>
+    <meta property="og:title" content="Gesty, Un outil qui vous permettra, de créer en ligne pas à pas vos listes de tâches à effectuer"/>
+    <meta property="og:description" content="Gesty, outil de liste de tâches, gestionnaire de projets, liens favoris, outils multitâches, gérer vos projets en ligne"/>
+    <meta property="og:image" content="{{ asset('images/favicon-32x32.png') }}"/>
 
     <title>{% block title %}GESTY{% endblock %}</title>
 
@@ -15,59 +24,48 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/favicon-96x96.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/flexslider.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/animate.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/fancybox.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/main.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/responsive.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/css/member.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
     {% endblock %}
 </head>
 
 <body>
-<section class="banner" role="banner" style="height: 300px;">
+<section class="banner" role="banner">
     <header id="header">
         <div class="header-content clearfix">
             <a class="logo" href="{{ path('oc_project_home') }}">GESTY</a>
             <nav class="navigation" role="navigation">
                 <ul class="primary-nav">
                     <li><a href="{{ path('oc_project_home') }}">Accueil</a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li><a href="#presentation">Présentation</a></li>
+                    <li><a href="#creations">Créations</a></li>
+                    <li><a href="#download">Témoignages</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a class="espace" href="{{ path('oc_project_member') }}"><i class="fas fa-circle green"></i>Espace Membre</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a class="admin" href="{{ path('oc_project_admin') }}"><i class="fas fa-circle yellow"></i>Espace Admin</a></li>
+                        {% endif %}
+                        <li><a class="deconnect" href="{{ path('fos_user_security_logout') }}"><i class="fas fa-circle red"></i>Se déconnecter</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <a href="#" class="nav-toggle">Menu<span></span></a>
         </div><!-- header content -->
-
     </header><!-- header -->
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="banner-text text-center">
+                {% block body %}
 
-    <div class="container-fluid  d-flex justify-content-center text-white text-center" style=" position: absolute; margin: 200px auto;">
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
+                {% endblock %}
+            </div><!-- banner text -->
+        </div>
     </div>
-</section>
-
-
-
-
-
-{% block body %}
-
-    {% if app.request.hasPreviousSession %}
-        {% for type, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-                <div class="flash-{{ type }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-    {% endif %}
-
-
-
-{% endblock %}
+</section><!-- banner -->
 
 <footer class="footer">
     <div class="footer-top">
@@ -75,7 +73,8 @@
             <div class="row">
                 <div class="footer-col col-md-4">
                     <h5>Gesty</h5>
-                    <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par <a href="https://openclassrooms.com" target="_blank">Openclassrooms</a></p>
+                    <p>Ce projet a été réalisé dans le cadre de la formation<br>Développeur web junior organisé par
+                        <a href="https://openclassrooms.com" target="_blank">Openclassrooms</a></p>
                 </div>
                 <div class="footer-col col-md-4">
 
@@ -93,7 +92,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="col-md-12">
-                <p>Copyright © {{ "now"|date("Y") }} Gesty. All Rights Reserved<br>Made with <i class="fa fa-heart pulse"></i> by <a href="http://kamalchaneman.com/">Kamal Chaneman</a></p>
+                <p>Copyright © {{ "now"|date("Y") }} Gesty. All Rights Reserved<br>Made with <i class="fa fa-heart pulse"></i> by <a href="http://kamalchaneman.com/" target="_blank">Kamal Chaneman</a></p>
             </div>
         </div>
     </div>
@@ -104,11 +103,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('assets/js/jquery.min.js') }}"><\/script>')</script>
-    <script src="{{ asset('build/js/flexslider.js') }}"></script>
-    <script src="{{ asset('build/js/fancybox.js') }}"></script>
-    <script src="{{ asset('build/js/waypoints.js') }}"></script>
-    <script src="{{ asset('build/js/retina.js') }}"></script>
-    <script src="{{ asset('build/js/main.js') }}"></script>
 
 {% endblock %}
 

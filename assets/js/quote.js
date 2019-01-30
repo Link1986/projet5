@@ -84,12 +84,9 @@ const Generator = {
         const getAuthor = document.getElementById("author");
         const button = document.getElementById("button");
 
-        const randNum;
-        const displayedQuote;
+        const randNum = Math.floor(Math.random() * quotes.length);
 
-        randNum = Math.floor(Math.random() * quotes.length);
-
-        displayedQuote = quotes[randNum];
+        const displayedQuote = quotes[randNum];
 
         getQuote.innerText = "\"" + displayedQuote.content + "\"";
         getAuthor.innerText = displayedQuote.author;
